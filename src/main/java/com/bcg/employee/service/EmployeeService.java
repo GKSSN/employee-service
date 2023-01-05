@@ -46,7 +46,7 @@ public class EmployeeService {
 			employee = employeeOp.get();
 			restTemplate.setErrorHandler(new RestTemplateResponseErrorHandler());
 			contractTransactions = restTemplate.getForObject(
-					"http://localhost:9091/bcg/getAllContractsByEmp/" + employee.getId(), ContractTransaction[].class);
+					"http://CONTRACT-SERVICE/bcg/getAllContractsByEmp/" + employee.getId(), ContractTransaction[].class);
 
 		} else {
 			throw new EmployeeNotFoundException();
