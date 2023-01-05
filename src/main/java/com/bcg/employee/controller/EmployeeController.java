@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bcg.employee.dto.EmployeeContractDTO;
 import com.bcg.employee.entity.Employee;
 import com.bcg.employee.exception.EmployeeNotFoundException;
 import com.bcg.employee.service.EmployeeService;
@@ -20,7 +21,7 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	
-	@PostMapping("/save")
+	@PostMapping("/saveEmployee")
 	public Employee saveEmployee(@RequestBody Employee employee) {
 		return employeeService.saveEmployee(employee);
 	}
@@ -42,5 +43,11 @@ public class EmployeeController {
 		}
 		return employee;
 	}
+	
+	@GetMapping("/getEmployeeWithContractDetails/{id}")
+	public EmployeeContractDTO getEmployeeWithContractDetails(@PathVariable Long id) {
+		return employeeService.getEmployeeWithContractDetails(id);
+	}
+	
 	
 }
